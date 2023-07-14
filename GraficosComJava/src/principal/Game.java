@@ -11,7 +11,7 @@ public class Game extends Canvas implements Runnable{
 	
 	private final int ALTURA = 120;
 	private final int LARGURA = 160;
-	private final int ESCALA = 4;
+	private final int ESCALA = 3;
 	
 	public Game() {
 		this.setPreferredSize(new Dimension(LARGURA*ESCALA, ALTURA*ESCALA));
