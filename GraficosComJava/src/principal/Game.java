@@ -49,7 +49,7 @@ public class Game extends Canvas implements Runnable{
 
 		
 	}
-	
+	// tick função muito importante
 	public void tick() {
 		
 	}
