@@ -3,6 +3,7 @@ package principal;
 import java.awt.Canvas;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.image.BufferStrategy;
 import java.awt.image.BufferedImage;
@@ -45,6 +46,7 @@ public class Game extends Canvas implements Runnable{
 
 	}
 	
+	// Iniciando o jogo com esse metodo
 	public synchronized void start(){
 		
 	    thread = new Thread(this);
@@ -56,13 +58,18 @@ public class Game extends Canvas implements Runnable{
 	public synchronized void stop(){
 
 		
+		
 	}
 	// tick função muito importante
 	public void tick() {
 		
+		
 	}
 	
 	public void render(){
+		
+		// Utilizando BufferStrategy para otimizar a 
+		// renderização do jogo para rodar mais rapido.
 		BufferStrategy bs = this.getBufferStrategy();
 	    if(bs == null){
 	        this.createBufferStrategy(3);
@@ -70,9 +77,15 @@ public class Game extends Canvas implements Runnable{
 	    }
 	    Graphics g = image.getGraphics();
 
-	    g.setColor(new Color(100, 0, 0));
+	    g.setColor(new Color(255, 255, 255));
 	    g.fillRect(0, 0, LARGURA, ALTURA);
+	    
+	    // Adicionando um texto na tela com a cor preta
+	    g.setFont(new Font("Arial", Font.BOLD, 10));
+	    g.setColor(new Color(0, 0, 0));
+	    g.drawString("Meu nome é João Paulo", 0, 50);
 
+	    // Desenhando na tela
 	    g = bs.getDrawGraphics();
 	    g.drawImage(image, 0, 0, LARGURA*ESCALA, ALTURA*ESCALA, null);
 	    bs.show();
@@ -112,6 +125,5 @@ public class Game extends Canvas implements Runnable{
 		
 	}// Fecha o metodo
 
-	
 	
 }// Fim da classe Game
