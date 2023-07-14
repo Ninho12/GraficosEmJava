@@ -92,4 +92,6 @@ public class Game extends Canvas implements Runnable{
 		
 	}// Fecha o metodo
 
-}
+	
+	
+}// Fim da classe Game
