@@ -1,7 +1,11 @@
 package principal;
 
 import java.awt.Canvas;
+import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Graphics;
+import java.awt.image.BufferStrategy;
+import java.awt.image.BufferedImage;
 
 import javax.swing.JFrame;
 
@@ -16,6 +20,8 @@ public class Game extends Canvas implements Runnable{
 	private final int LARGURA = 160;
 	private final int ESCALA = 3;
 	
+	private BufferedImage image;
+	
 	public Game() {
 		this.setPreferredSize(new Dimension(LARGURA*ESCALA, ALTURA*ESCALA));
 		frame = new JFrame("Meu Primeiro Jogo em Java");
@@ -26,6 +32,8 @@ public class Game extends Canvas implements Runnable{
 		frame.setLocationRelativeTo(null);
 		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		frame.setVisible(true);
+		
+		image = new BufferedImage(LARGURA, ALTURA, BufferedImage.TYPE_INT_RGB);
 		
 	}
 	
@@ -55,7 +63,19 @@ public class Game extends Canvas implements Runnable{
 	}
 	
 	public void render(){
-		
+		BufferStrategy bs = this.getBufferStrategy();
+	    if(bs == null){
+	        this.createBufferStrategy(3);
+	        return;
+	    }
+	    Graphics g = image.getGraphics();
+
+	    g.setColor(new Color(100, 0, 0));
+	    g.fillRect(0, 0, LARGURA, ALTURA);
+
+	    g = bs.getDrawGraphics();
+	    g.drawImage(image, 0, 0, LARGURA*ESCALA, ALTURA*ESCALA, null);
+	    bs.show();
 	}
 	
 	@Override
