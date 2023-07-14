@@ -44,7 +44,7 @@ public class Game extends Canvas implements Runnable{
 	    isRunner = true;
 	    
 	}
-	
+	// stop função muito importante
 	public synchronized void stop(){
 
 		
